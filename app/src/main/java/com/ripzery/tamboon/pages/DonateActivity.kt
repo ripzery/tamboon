@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import co.omise.android.CardNumber
@@ -30,8 +31,18 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
-
         initInstance()
+    }
+
+    private fun initInstance() {
+        setSupportActionBar(toolbarDonate)
+        supportActionBar?.title = "Donate"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        spinExpiryMonth.adapter = mExpiryMonthAdapter
+        spinExpiryYear.adapter = mExpiryYearAdapter
+        etCreditCard.addTextChangedListener(ActivityTextWatcher())
+
         btnDonate.setOnClickListener {
             val charityName = intent.getStringExtra(EXTRA_NAME)
             val tokenRequest = TokenRequest().apply {
@@ -45,10 +56,14 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
         }
     }
 
-    private fun initInstance() {
-        spinExpiryMonth.adapter = mExpiryMonthAdapter
-        spinExpiryYear.adapter = mExpiryYearAdapter
-        etCreditCard.addTextChangedListener(ActivityTextWatcher())
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home ->{
+                finish()
+                return true
+            }
+        }
+        return false
     }
 
     // Override MVP method zone
