@@ -3,39 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context="com.ripzery.tamboon.DonateActivity">
 
     <LinearLayout
+        android:id="@+id/layoutAddCreditCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        tools:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter credit card number" />
+            android:text="Please add credit card" />
 
-        <EditText
-            android:id="@+id/etCreditCard"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnEnterCreditCard"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="credit card number"
-            tools:text="3225 4827 1239 8234" />
+            android:layout_marginTop="8dp"
+            android:text="Add credit card"
+            android:theme="@style/BlueButton" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btnDonate"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Donate" />
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="amount"
+            android:inputType="number" />
+
+    </FrameLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -43,5 +60,14 @@
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnDonate"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:enabled="false"
+        android:text="Donate" />
 
 </FrameLayout>

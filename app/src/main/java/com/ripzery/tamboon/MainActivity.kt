@@ -36,10 +36,12 @@ class MainActivity : AppCompatActivity() {
         })
         recyclerView.adapter = mCharityListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        ApiService.mTamboonApiClient.getCharities().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe {
+        ApiService.mTamboonApiClient.getCharities().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
             Log.d("MainActivity", it.toString())
             mCharityListAdapter.setList(it)
-        }
+        }, {
+            it.printStackTrace()
+        })
     }
 
     inner class CharityListAdapter(private var list: MutableList<Tamboon.Charity>, val callback: (Tamboon.Charity) -> Unit) : RecyclerView.Adapter<CharityListAdapter.CharityViewHolder>() {

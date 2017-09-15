@@ -20,6 +20,9 @@
         </activity>
         <activity android:name=".DonateActivity" />
         <activity android:name=".SuccessActivity"></activity>
+        <activity
+            android:name="co.omise.android.ui.CreditCardActivity"
+            android:theme="@style/OmiseSDKTheme" />
     </application>
 
 </manifest>

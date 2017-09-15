@@ -2,6 +2,7 @@ package com.ripzery.tamboon.Network
 
 import com.ripzery.tamboon.data.Tamboon
 import io.reactivex.Observable
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -10,8 +11,8 @@ import retrofit2.http.POST
  */
 interface TamboonApiService {
     @GET("./")
-    fun getCharities() : Observable<List<Tamboon.Charity>>
+    fun getCharities(): Observable<List<Tamboon.Charity>>
 
     @POST("donate")
-    fun donate(name: String, token: String, amount: Int) : Observable<String>
+    fun donate(@Body mRequest: Tamboon.DonateRequest): Observable<Tamboon.DonateResponse>
 }
