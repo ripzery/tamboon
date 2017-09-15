@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(toolbarCharity)
+        supportActionBar?.title = "Tamboon"
+
         mCharityListAdapter = CharityListAdapter(mutableListOf(), {
             val intent = Intent(this, DonateActivity::class.java)
             intent.putExtra(DonateActivity.EXTRA_ID, it.id)
