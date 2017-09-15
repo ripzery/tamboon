@@ -13,8 +13,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.ripzery.tamboon.network.ApiService
 import com.ripzery.tamboon.data.Tamboon
+import com.ripzery.tamboon.network.ApiService
 import com.ripzery.tamboon.pages.DonateActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         mCharityListAdapter = CharityListAdapter(mutableListOf(), {
             val intent = Intent(this, DonateActivity::class.java)
-            intent.putExtra("id", it.id)
-            intent.putExtra("name", it.name)
-            intent.putExtra("logo_url", it.logo)
+            intent.putExtra(DonateActivity.EXTRA_ID, it.id)
+            intent.putExtra(DonateActivity.EXTRA_NAME, it.name)
+            intent.putExtra(DonateActivity.EXTRA_LOGO_URL, it.logo)
             startActivity(intent)
         })
         recyclerView.adapter = mCharityListAdapter

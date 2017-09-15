@@ -19,17 +19,14 @@ import kotlinx.android.synthetic.main.activity_donate.*
 
 class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Presenter>(), DonateContract.View {
     override val mPresenter: DonateContract.Presenter by lazy { DonatePresenter() }
-    private val REQUEST_CC = 100
     private var mToken: String? = null
-    private val mExpiryMonthAdapter by lazy {
-        object : ExpiryMonthSpinnerAdapter() {
+    private val mExpiryMonthAdapter by lazy { object : ExpiryMonthSpinnerAdapter() {} }
+    private val mExpiryYearAdapter by lazy { object : ExpiryYearSpinnerAdapter() {} }
 
-        }
-    }
-    private val mExpiryYearAdapter by lazy {
-        object : ExpiryYearSpinnerAdapter() {
-
-        }
+    companion object {
+        val EXTRA_ID = "DonateActivity.id"
+        val EXTRA_NAME = "DonateActivity.name"
+        val EXTRA_LOGO_URL = "DonateActivity.logoUrl"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,12 +34,8 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
         setContentView(R.layout.activity_donate)
 
         initInstance()
-//        val intent = Intent(this, CreditCardActivity::class.java)
-//        intent.putExtra(CreditCardActivity.EXTRA_PKEY, "pkey_test_58i9pow3dgadkocuwlm")
-//        startActivityForResult(intent, REQUEST_CC)
-
         btnDonate.setOnClickListener {
-            val charityName = intent.getStringExtra("name")
+            val charityName = intent.getStringExtra(EXTRA_NAME)
             val tokenRequest = TokenRequest().apply {
                 number = etCreditCard.text.toString()
                 name = etName.text.toString()
