@@ -1,4 +1,4 @@
-package com.ripzery.tamboon.Network
+package com.ripzery.tamboon.network
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.ripzery.tamboon.BuildConfig

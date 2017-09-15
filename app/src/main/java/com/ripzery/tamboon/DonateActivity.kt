@@ -12,7 +12,7 @@ import co.omise.android.ui.CreditCardActivity
 import co.omise.android.ui.ExpiryMonthSpinnerAdapter
 import co.omise.android.ui.ExpiryYearSpinnerAdapter
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
-import com.ripzery.tamboon.Network.ApiService
+import com.ripzery.tamboon.network.ApiService
 import com.ripzery.tamboon.data.Tamboon
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

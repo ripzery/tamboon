@@ -13,7 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.ripzery.tamboon.Network.ApiService
+import com.ripzery.tamboon.network.ApiService
 import com.ripzery.tamboon.data.Tamboon
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

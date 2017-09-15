@@ -1,4 +1,4 @@
-package com.ripzery.tamboon.Network
+package com.ripzery.tamboon.network
 
 import com.ripzery.tamboon.data.Tamboon
 import io.reactivex.Observable
