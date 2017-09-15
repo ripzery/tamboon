@@ -10,6 +10,7 @@ interface DonateContract {
     interface View : BaseMvpContract.BaseView {
         fun showDonateSuccess()
         fun showDonateFailed(failedMsg: String)
+        fun enableUI(enable: Boolean)
     }
 
     interface Presenter : BaseMvpContract.BasePresenter<View> {

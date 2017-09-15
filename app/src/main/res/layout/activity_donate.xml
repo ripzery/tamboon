@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlackTransparent"
-    android:padding="16dp"
     tools:context="com.ripzery.tamboon.pages.DonateActivity">
 
     <!-- Content Layout  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:orientation="vertical">
 
         <TextView
@@ -161,14 +160,14 @@
         android:id="@+id/layoutLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBlackTransparent"
         android:visibility="gone">
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:visibility="gone" />
+            android:layout_gravity="center" />
 
     </FrameLayout>
 

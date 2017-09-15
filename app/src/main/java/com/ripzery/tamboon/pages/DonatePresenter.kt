@@ -19,14 +19,18 @@ class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.
     private val mClient by lazy { Client("pkey_test_58i9pow3dgadkocuwlm") }
 
     override fun donate(tokenRequest: TokenRequest, name: String, amount: Int) {
+        mView?.enableUI(false)
+        mView?.showLoading()
         mClient.send(tokenRequest, object : TokenRequestListener {
             override fun onTokenRequestSucceed(tokenRequest: TokenRequest, token: Token) {
                 val d = ApiService.mTamboonApiClient
                         .donate(Tamboon.DonateRequest(name, token.id, amount))
-                        .doOnSubscribe { mView?.showLoading() }
-                        .doFinally { mView?.hideLoading() }
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
+                        .doFinally {
+                            mView?.enableUI(true)
+                            mView?.hideLoading()
+                        }
                         .subscribe({
                             mView?.showDonateSuccess()
                         }, {
@@ -47,6 +51,8 @@ class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.
 
             override fun onTokenRequestFailed(tokenRequest: TokenRequest, p1: Throwable) {
                 Log.d("token request", p1.message)
+                mView?.enableUI(true)
+                mView?.hideLoading()
             }
         })
     }

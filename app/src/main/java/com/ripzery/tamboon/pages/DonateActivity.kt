@@ -4,11 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
+import android.view.View
 import android.widget.Toast
 import co.omise.android.CardNumber
 import co.omise.android.TokenRequest
-import co.omise.android.ui.CreditCardActivity
 import co.omise.android.ui.ExpiryMonthSpinnerAdapter
 import co.omise.android.ui.ExpiryYearSpinnerAdapter
 import com.ripzery.tamboon.R
@@ -52,7 +51,7 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
         spinExpiryYear.adapter = mExpiryYearAdapter
         etCreditCard.addTextChangedListener(ActivityTextWatcher())
     }
-    
+
     // Override MVP method zone
     override fun showDonateSuccess() {
         startActivity(Intent(this@DonateActivity, SuccessActivity::class.java))
@@ -63,11 +62,22 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
     }
 
     override fun showLoading() {
+        layoutLoading.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
+        layoutLoading.visibility = View.GONE
     }
 
+    override fun enableUI(enable: Boolean) {
+        btnDonate.isEnabled = enable
+        etCreditCard.isEnabled = enable
+        etName.isEnabled = enable
+        spinExpiryMonth.isEnabled = enable
+        spinExpiryYear.isEnabled = enable
+        etCvv.isEnabled = enable
+        etAmount.isEnabled = enable
+    }
     // Inner class zone
 
     private inner class ActivityTextWatcher : TextWatcher {
