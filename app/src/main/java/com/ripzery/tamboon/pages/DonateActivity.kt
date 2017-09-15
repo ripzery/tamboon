@@ -52,23 +52,7 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
         spinExpiryYear.adapter = mExpiryYearAdapter
         etCreditCard.addTextChangedListener(ActivityTextWatcher())
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == CreditCardActivity.RESULT_OK) {
-            when (requestCode) {
-                REQUEST_CC -> {
-                    mToken = data?.getStringExtra(CreditCardActivity.EXTRA_TOKEN)
-                    btnDonate.isEnabled = true
-                    Log.d("Token", mToken ?: "null")
-                }
-                else -> super.onActivityResult(requestCode, resultCode, data)
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
-    }
-
-
+    
     // Override MVP method zone
     override fun showDonateSuccess() {
         startActivity(Intent(this@DonateActivity, SuccessActivity::class.java))
