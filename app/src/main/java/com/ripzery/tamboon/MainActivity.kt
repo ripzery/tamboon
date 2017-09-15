@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ripzery.tamboon.network.ApiService
 import com.ripzery.tamboon.data.Tamboon
+import com.ripzery.tamboon.pages.DonateActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*

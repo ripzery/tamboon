@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DonateActivity" />
+        <activity android:name=".pages.DonateActivity" />
         <activity android:name=".SuccessActivity"></activity>
         <activity
             android:name="co.omise.android.ui.CreditCardActivity"
