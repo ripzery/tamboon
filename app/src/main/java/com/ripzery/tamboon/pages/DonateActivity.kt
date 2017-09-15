@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_donate.*
 
 class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Presenter>(), DonateContract.View {
     override val mPresenter: DonateContract.Presenter by lazy { DonatePresenter() }
-    private var mToken: String? = null
     private val mExpiryMonthAdapter by lazy { object : ExpiryMonthSpinnerAdapter() {} }
     private val mExpiryYearAdapter by lazy { object : ExpiryYearSpinnerAdapter() {} }
 

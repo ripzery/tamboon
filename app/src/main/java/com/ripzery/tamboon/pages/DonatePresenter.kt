@@ -43,6 +43,8 @@ class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.
 
                                 // Show error cause to user
                                 mView?.showDonateFailed(errorText)
+                            } else {
+                                mView?.showDonateFailed("Unknown error")
                             }
                         })
 
