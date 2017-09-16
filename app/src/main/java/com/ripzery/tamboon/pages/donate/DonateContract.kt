@@ -14,6 +14,6 @@ interface DonateContract {
     }
 
     interface Presenter : BaseMvpContract.BasePresenter<View> {
-        fun donate(tokenRequest: TokenRequest, name: String, amount: Int)
+        fun donate(tokenRequest: TokenRequest, name: String, amount: String)
     }
 }

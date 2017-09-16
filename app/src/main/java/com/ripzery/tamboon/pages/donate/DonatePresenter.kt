@@ -18,13 +18,18 @@ import io.reactivex.schedulers.Schedulers
 class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.Presenter {
     private val mClient by lazy { Client("pkey_test_58i9pow3dgadkocuwlm") }
 
-    override fun donate(tokenRequest: TokenRequest, name: String, amount: Int) {
+    override fun donate(tokenRequest: TokenRequest, name: String, amount: String) {
+        if(amount.isEmpty()){
+            mView?.showDonateFailed("Please enter amount")
+            return
+        }
+
         mView?.enableUI(false)
         mView?.showLoading()
         mClient.send(tokenRequest, object : TokenRequestListener {
             override fun onTokenRequestSucceed(tokenRequest: TokenRequest, token: Token) {
                 val d = ApiService.mTamboonApiClient
-                        .donate(Tamboon.DonateRequest(name, token.id, amount))
+                        .donate(Tamboon.DonateRequest(name, token.id, amount.toInt()))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doFinally {

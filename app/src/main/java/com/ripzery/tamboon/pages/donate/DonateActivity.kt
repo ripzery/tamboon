@@ -52,7 +52,8 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
                 expirationYear = spinExpiryYear.selectedItem as Int
                 securityCode = etCvv.text.toString()
             }
-            mPresenter.donate(tokenRequest, charityName, etAmount.text.toString().toInt())
+            val amount = etAmount.text.toString()
+            mPresenter.donate(tokenRequest, charityName, amount)
         }
     }
 
