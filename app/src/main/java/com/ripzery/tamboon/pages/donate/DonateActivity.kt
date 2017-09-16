@@ -6,14 +6,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import co.omise.android.CardNumber
 import co.omise.android.TokenRequest
 import co.omise.android.ui.ExpiryMonthSpinnerAdapter
 import co.omise.android.ui.ExpiryYearSpinnerAdapter
 import com.ripzery.tamboon.R
-import com.ripzery.tamboon.pages.success.SuccessActivity
 import com.ripzery.tamboon.base.BaseMvpActivity
+import com.ripzery.tamboon.extensions.toast
+import com.ripzery.tamboon.pages.success.SuccessActivity
 import kotlinx.android.synthetic.main.activity_donate.*
 
 
@@ -59,7 +59,7 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home ->{
+            android.R.id.home -> {
                 finish()
                 return true
             }
@@ -73,7 +73,7 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
     }
 
     override fun showDonateFailed(failedMsg: String) {
-        Toast.makeText(this@DonateActivity, failedMsg, Toast.LENGTH_SHORT).show()
+        toast(failedMsg)
     }
 
     override fun showLoading() {

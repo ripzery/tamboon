@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ripzery.tamboon.R
 import com.ripzery.tamboon.base.BaseMvpActivity
 import com.ripzery.tamboon.data.Tamboon
+import com.ripzery.tamboon.extensions.toast
 import com.ripzery.tamboon.pages.donate.DonateActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -60,7 +60,7 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
 
     override fun showError(errorMsg: String) {
         tvError.visibility = View.VISIBLE
-        Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()
+        toast(errorMsg)
     }
 
     // Inner class zone
