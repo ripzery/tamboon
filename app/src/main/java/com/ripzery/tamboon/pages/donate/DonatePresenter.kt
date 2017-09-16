@@ -9,6 +9,7 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.ripzery.tamboon.base.BaseMvpPresenter
 import com.ripzery.tamboon.data.Tamboon
 import com.ripzery.tamboon.network.ApiService
+import com.ripzery.tamboon.utils.OmiseKeyUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -16,10 +17,10 @@ import io.reactivex.schedulers.Schedulers
  * Created by ripzery on 9/16/17.
  */
 class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.Presenter {
-    private val mClient by lazy { Client("pkey_test_58i9pow3dgadkocuwlm") }
+    private val mClient by lazy { Client(OmiseKeyUtils.pk()) }
 
     override fun donate(tokenRequest: TokenRequest, name: String, amount: String) {
-        if(amount.isEmpty()){
+        if (amount.isEmpty()) {
             mView?.showDonateFailed("Please enter amount")
             return
         }
@@ -63,5 +64,13 @@ class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.
                 mView?.hideLoading()
             }
         })
+    }
+
+    external fun pk(): String
+
+    companion object {
+        init {
+            System.loadLibrary("native-lib")
+        }
     }
 }

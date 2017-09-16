@@ -12,11 +12,21 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
         }
     }
     flavorDimensions "tb"
@@ -25,7 +35,6 @@ android {
             dimension 'tb'
             applicationId "com.ripzery.tamboon"
             buildConfigField 'String', 'tamboonBaseUrl', '"http://192.168.31.217:8080/"'
-            buildConfigField 'String', 'omisePublicKey', '"pkey_test_580phiqcu3wsy75nbby"'
         }
     }
 }
