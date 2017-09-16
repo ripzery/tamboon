@@ -4,6 +4,7 @@
     <!-- Main screen -->
     <string name="main_error_connection">Check your server ip address and make sure it\'s normally working.</string>
     <string name="main_charity_logo_content_description">Charity logo</string>
+
     <!-- Donate screen -->
     <string name="donate_toolbar_title">Donate</string>
     <string name="donate_card_number">Card Number</string>
