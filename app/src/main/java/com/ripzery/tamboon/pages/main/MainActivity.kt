@@ -50,6 +50,7 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
     }
 
     override fun showError(errorMsg: String) {
+        tvError.visibility = View.VISIBLE
         Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()
     }
 
