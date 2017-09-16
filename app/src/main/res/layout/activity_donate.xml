@@ -145,6 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="@string/donate_amount"
+                android:maxLength="9"
+                android:maxLines="1"
                 android:inputType="number" />
 
         </FrameLayout>
