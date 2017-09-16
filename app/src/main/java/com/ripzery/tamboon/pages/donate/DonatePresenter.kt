@@ -65,12 +65,4 @@ class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.
             }
         })
     }
-
-    external fun pk(): String
-
-    companion object {
-        init {
-            System.loadLibrary("native-lib")
-        }
-    }
 }
