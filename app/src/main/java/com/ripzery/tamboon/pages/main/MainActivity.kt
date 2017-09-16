@@ -25,7 +25,10 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initInstance()
+    }
 
+    private fun initInstance() {
         setSupportActionBar(toolbarCharity)
         supportActionBar?.title = "Tamboon"
 
@@ -33,6 +36,12 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
         recyclerView.adapter = mCharityListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mPresenter.loadCharitiesList()
+    }
+
+    // Override MVP method zone
+
+    override fun hideLoading() {
+        layoutLoading.visibility = View.GONE
     }
 
     override fun showCharitiesList(list: MutableList<Tamboon.Charity>) {
@@ -53,6 +62,8 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
         tvError.visibility = View.VISIBLE
         Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()
     }
+
+    // Inner class zone
 
     inner class CharityListAdapter(private var list: MutableList<Tamboon.Charity>, val callback: (Tamboon.Charity) -> Unit) : RecyclerView.Adapter<CharityListAdapter.CharityViewHolder>() {
         override fun onBindViewHolder(holder: CharityViewHolder?, position: Int) {

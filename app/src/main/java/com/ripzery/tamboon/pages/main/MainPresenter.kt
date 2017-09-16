@@ -12,13 +12,19 @@ import java.net.ConnectException
  */
 class MainPresenter : BaseMvpPresenter<MainContract.View>(), MainContract.Presenter {
     override fun loadCharitiesList() {
-        ApiService.mTamboonApiClient.getCharities().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
-            mView?.showCharitiesList(it.toMutableList())
-        }, {
-            if (it is ConnectException) {
-                mView?.showError(it.message!!)
-            }
-        })
+        val d = ApiService.mTamboonApiClient.getCharities()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally { mView?.hideLoading() }
+                .subscribe({
+                    mView?.showCharitiesList(it.toMutableList())
+                }, {
+                    if (it is ConnectException) {
+                        mView?.showError(it.message!!)
+                    }
+                })
+
+        addSubscription(d)
     }
 
     override fun handleCharityClicked(charity: Tamboon.Charity) {
