@@ -1,4 +1,4 @@
-package com.ripzery.tamboon.pages
+package com.ripzery.tamboon.pages.donate
 
 import co.omise.android.TokenRequest
 import com.ripzery.tamboon.base.BaseMvpContract

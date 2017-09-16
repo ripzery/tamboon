@@ -1,27 +1,25 @@
-package com.ripzery.tamboon
+package com.ripzery.tamboon.pages.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.ripzery.tamboon.R
+import com.ripzery.tamboon.base.BaseMvpActivity
 import com.ripzery.tamboon.data.Tamboon
-import com.ripzery.tamboon.network.ApiService
-import com.ripzery.tamboon.pages.DonateActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.ripzery.tamboon.pages.donate.DonateActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(), MainContract.View {
+    override val mPresenter: MainContract.Presenter by lazy { MainPresenter() }
     lateinit private var mCharityListAdapter: CharityListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,21 +29,28 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbarCharity)
         supportActionBar?.title = "Tamboon"
 
-        mCharityListAdapter = CharityListAdapter(mutableListOf(), {
-            val intent = Intent(this, DonateActivity::class.java)
-            intent.putExtra(DonateActivity.EXTRA_ID, it.id)
-            intent.putExtra(DonateActivity.EXTRA_NAME, it.name)
-            intent.putExtra(DonateActivity.EXTRA_LOGO_URL, it.logo)
-            startActivity(intent)
-        })
+        mCharityListAdapter = CharityListAdapter(mutableListOf(), { mPresenter.handleCharityClicked(it) })
         recyclerView.adapter = mCharityListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        ApiService.mTamboonApiClient.getCharities().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
-            Log.d("MainActivity", it.toString())
-            mCharityListAdapter.setList(it)
-        }, {
-            it.printStackTrace()
-        })
+        mPresenter.loadCharitiesList()
+    }
+
+    override fun showCharitiesList(list: MutableList<Tamboon.Charity>) {
+        mCharityListAdapter.setList(list)
+    }
+
+    override fun showDonateScreen(charity: Tamboon.Charity) {
+        val intent = Intent(this, DonateActivity::class.java)
+        with(charity) {
+            intent.putExtra(DonateActivity.EXTRA_ID, id)
+            intent.putExtra(DonateActivity.EXTRA_NAME, name)
+            intent.putExtra(DonateActivity.EXTRA_LOGO_URL, logo)
+        }
+        startActivity(intent)
+    }
+
+    override fun showError(errorMsg: String) {
+        Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show()
     }
 
     inner class CharityListAdapter(private var list: MutableList<Tamboon.Charity>, val callback: (Tamboon.Charity) -> Unit) : RecyclerView.Adapter<CharityListAdapter.CharityViewHolder>() {

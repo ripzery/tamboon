@@ -1,4 +1,4 @@
-package com.ripzery.tamboon.pages
+package com.ripzery.tamboon.pages.donate
 
 import android.util.Log
 import co.omise.android.Client
@@ -42,7 +42,7 @@ class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.
                                 errorText = errorText.split(" ").drop(1).joinToString(" ")
 
                                 // Show error cause to user
-                                mView?.showDonateFailed(errorText)
+                                mView?.showDonateFailed(errorText.capitalize())
                             } else {
                                 mView?.showDonateFailed("Unknown error")
                             }
@@ -51,8 +51,9 @@ class DonatePresenter : BaseMvpPresenter<DonateContract.View>(), DonateContract.
                 addSubscription(d)
             }
 
-            override fun onTokenRequestFailed(tokenRequest: TokenRequest, p1: Throwable) {
-                Log.d("token request", p1.message)
+            override fun onTokenRequestFailed(tokenRequest: TokenRequest, throwable: Throwable) {
+                Log.d("token request", throwable.message)
+                mView?.showDonateFailed(throwable.message!!.capitalize())
                 mView?.enableUI(true)
                 mView?.hideLoading()
             }

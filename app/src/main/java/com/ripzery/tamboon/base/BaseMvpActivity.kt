@@ -22,4 +22,7 @@ abstract class BaseMvpActivity<in V : BaseMvpContract.BaseView, out P : BaseMvpC
         super.onDestroy()
         mPresenter.detachView()
     }
+
+    override fun showLoading() {}
+    override fun hideLoading() {}
 }

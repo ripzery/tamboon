@@ -1,4 +1,4 @@
-package com.ripzery.tamboon.pages
+package com.ripzery.tamboon.pages.donate
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import co.omise.android.TokenRequest
 import co.omise.android.ui.ExpiryMonthSpinnerAdapter
 import co.omise.android.ui.ExpiryYearSpinnerAdapter
 import com.ripzery.tamboon.R
-import com.ripzery.tamboon.SuccessActivity
+import com.ripzery.tamboon.pages.success.SuccessActivity
 import com.ripzery.tamboon.base.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_donate.*
 
