@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Tamboon</string>
+
+    <!-- Main screen -->
+    <string name="main_error_connection">Check your server ip address and make sure it\'s normally working.</string>
+    <string name="main_charity_logo_content_description">Charity logo</string>
+    <!-- Donate screen -->
+    <string name="donate_toolbar_title">Donate</string>
+    <string name="donate_card_number">Card Number</string>
+    <string name="donate_name_on_card">Name on card</string>
+    <string name="donate_expiry_date">Expiry date</string>
+    <string name="donate_security_code">Security Code</string>
+    <string name="donate_cvv">CVV</string>
+    <string name="donate_amount">Amount</string>
+    <string name="donate_button">Donate</string>
+
+    <!-- Success Screen -->
+    <string name="success_text">Success</string>
+    <string name="success_button">Done</string>
+
 </resources>

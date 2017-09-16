@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Card Number" />
+            android:text="@string/donate_card_number" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,7 +36,6 @@
                 android:id="@+id/etCreditCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:hint="@string/label_card_number"
@@ -47,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/description_brand_logo"
                 android:src="@drawable/brand_mastercard" />
@@ -58,13 +56,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Name on card" />
+            android:text="@string/donate_name_on_card" />
 
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name on card" />
+            android:hint="@string/donate_name_on_card" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,7 +80,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Expiry date" />
+                    android:text="@string/donate_expiry_date" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,13 +116,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Security Code" />
+                    android:text="@string/donate_security_code" />
 
                 <EditText
                     android:id="@+id/etCvv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="CVV"
+                    android:hint="@string/donate_cvv"
                     android:inputType="numberPassword" />
 
             </LinearLayout>
@@ -139,14 +137,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amount" />
+                android:text="@string/donate_amount" />
 
             <EditText
                 android:id="@+id/etAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="Amount"
+                android:hint="@string/donate_amount"
                 android:inputType="number" />
 
         </FrameLayout>
@@ -161,7 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_gravity="bottom"
-            android:text="Donate" />
+            android:text="@string/donate_button" />
 
     </LinearLayout>
 

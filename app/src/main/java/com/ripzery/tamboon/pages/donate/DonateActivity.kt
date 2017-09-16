@@ -36,7 +36,7 @@ class DonateActivity : BaseMvpActivity<DonateContract.View, DonateContract.Prese
 
     private fun initInstance() {
         setSupportActionBar(toolbarDonate)
-        supportActionBar?.title = "Donate"
+        supportActionBar?.title = getString(R.string.donate_toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         spinExpiryMonth.adapter = mExpiryMonthAdapter

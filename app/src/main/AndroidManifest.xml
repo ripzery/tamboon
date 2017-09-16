@@ -14,12 +14,12 @@
         <activity android:name=".pages.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".pages.donate.DonateActivity" />
-        <activity android:name=".pages.success.SuccessActivity"></activity>
+        <activity android:name=".pages.success.SuccessActivity" />
         <activity
             android:name="co.omise.android.ui.CreditCardActivity"
             android:theme="@style/OmiseSDKTheme" />

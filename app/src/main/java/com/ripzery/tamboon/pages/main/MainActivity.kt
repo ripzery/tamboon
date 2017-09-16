@@ -30,7 +30,7 @@ class MainActivity : BaseMvpActivity<MainContract.View, MainContract.Presenter>(
 
     private fun initInstance() {
         setSupportActionBar(toolbarCharity)
-        supportActionBar?.title = "Tamboon"
+        supportActionBar?.title = getString(R.string.app_name)
 
         mCharityListAdapter = CharityListAdapter(mutableListOf(), { mPresenter.handleCharityClicked(it) })
         recyclerView.adapter = mCharityListAdapter
